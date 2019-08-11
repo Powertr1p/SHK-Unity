@@ -5,18 +5,28 @@ using UnityEngine;
 public class e : MonoBehaviour
 {
     private Vector3 target;
+    private Vector3 currentPosition;
+
+    [SerializeField] private float speed;
+    [SerializeField] private int radius;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = Random.insideUnitCircle * 4;
+        GetTarget();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, 2 * Time.deltaTime);
+        currentPosition = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        transform.position = currentPosition;
         if (transform.position == target)
-            target = Random.insideUnitCircle * 4;
+            GetTarget();
+    }
+
+    private void GetTarget()
+    {
+        target = Random.insideUnitCircle * radius;
     }
 }
