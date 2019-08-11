@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
             if (timeRemain < 0)
             {
                 isTimerOn = false;
-                PlayerMovement.ReduceSpeedFromTimer(2.0f);
+                Player.ReduceSpeedFromTimer(0.2f);
             }
         }
     }
