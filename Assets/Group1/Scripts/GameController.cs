@@ -4,26 +4,51 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private float collisionDistance = 0.2f;
+
     public GameObject menuScreen;
-    public GameObject objectOne;
+    public GameObject Player;
     public GameObject[] objArray;
 
     private float distance;
-    [SerializeField] private float collisionDistance = 0.2f;
+    public float timeRemain;
+    public bool isTimerOn;
 
-     // Update is called once per frame
     void Update()
     {
-        foreach (var obj in objArray)
+        TimerManagement();
+        DetectCollision();
+        isGameEnd();
+    }
+
+    public void TimerManagement()
+    {
+        if (isTimerOn)
         {
-            distance = Vector3.Distance(objectOne.gameObject.gameObject.GetComponent<Transform>().position, obj.gameObject.gameObject.transform.position);
-            if (distance < collisionDistance)
-                objectOne.SendMessage("Send Message", obj);
+            timeRemain -= Time.deltaTime;
+            if (timeRemain < 0)
+            {
+                isTimerOn = false;
+                PlayerMovement.ReduceSpeedFromTimer(2.0f);
+            }
         }
     }
 
-    public void GameEnd()
+    public void DetectCollision()
     {
-        menuScreen.SetActive(true);
+        foreach (var obj in objArray)
+        {
+            distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, obj.gameObject.gameObject.transform.position);
+            if (distance < collisionDistance)
+                Player.OnCollision("enemy", obj); 
+        }
+    }
+
+    public void isGameEnd()
+    {
+        GameObject[] result = GameObject.FindGameObjectsWithTag("enemy");
+        if (result.Length == 0)
+            menuScreen.SetActive(true);
     }
 }
+
