@@ -7,8 +7,8 @@ public class Movement : MonoBehaviour
     private Vector3 target;
     private Vector3 currentPosition;
 
-    [SerializeField] private float speed;
-    [SerializeField] private int radius;
+    [SerializeField] private float speed = 2.0f;
+    [SerializeField] private int radius = 4;
 
     // Start is called before the first frame update
     void Start()
