@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class e : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     private Vector3 target;
     private Vector3 currentPosition;
@@ -13,7 +13,7 @@ public class e : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetTarget();
+        NextTarget();
     }
 
     // Update is called once per frame
@@ -22,10 +22,10 @@ public class e : MonoBehaviour
         currentPosition = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         transform.position = currentPosition;
         if (transform.position == target)
-            GetTarget();
+            NextTarget();
     }
 
-    private void GetTarget()
+    private void NextTarget()
     {
         target = Random.insideUnitCircle * radius;
     }
