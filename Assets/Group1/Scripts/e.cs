@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class e : MonoBehaviour
 {
-    private Vector3 Target;
+    private Vector3 target;
 
     // Start is called before the first frame update
     void Start()
     {
-        Target = Random.insideUnitCircle * 4;
+        target = Random.insideUnitCircle * 4;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Target, 2 * Time.deltaTime);
-        if (transform.position == Target)
-            Target = Random.insideUnitCircle * 4    ;
+        transform.position = Vector3.MoveTowards(transform.position, target, 2 * Time.deltaTime);
+        if (transform.position == target)
+            target = Random.insideUnitCircle * 4;
     }
 }
