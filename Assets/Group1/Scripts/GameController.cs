@@ -4,24 +4,38 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject go;
-    public GameObject a;
-    public GameObject[] B;
+    public GameObject menuScreen;
+    public GameObject objectOne;
+    public GameObject[] objArray;
 
-    // Update is called once per frame
+    private float distance;
+    [SerializeField] private float collisionDistance;
+
+     // Update is called once per frame
     void Update()
     {
-        foreach (var b in B)
+        GameStatus();
+    }
+
+    public void GameStatus()
+    {
+        foreach (var obj in objArray)
         {
-           if (b == null)
-                continue;
-            if (Vector3.Distance(a.gameObject.gameObject.GetComponent<Transform>().position, b.gameObject.gameObject.transform.position) < 0.2f)
-                a.SendMessage("SendMEssage", b);
+            distance = Vector3.Distance(objectOne.gameObject.gameObject.GetComponent<Transform>().position, 
+                                                              obj.gameObject.gameObject.transform.position);
+            if (obj != null)
+            {
+                if (distance < collisionDistance)
+                {
+                    objectOne.SendMessage("You are dead", obj);
+                    GameEnd();
+                }
+            }
         }
     }
 
-    public void End()
+    public void GameEnd()
     {
-        go.SetActive(true);
+        menuScreen.SetActive(true);
     }
 }
