@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private float _collisionDistance = 0.2f;
 
     public GameObject MenuScreen;
-    public GameObject Player;
+    public PlayerMovement Player;
     public GameObject[] Enemies;
 
     public float TimeRemain;
@@ -37,11 +37,11 @@ public class GameController : MonoBehaviour
 
     public void DetectCollision()
     {
-        foreach (var obj in Enemies)
+        foreach (var entity in Enemies)
         {
-            _distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, obj.gameObject.gameObject.transform.position);
+            _distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, entity.gameObject.gameObject.transform.position);
             if (_distance < _collisionDistance)
-                Player.OnCollision("enemy", obj); 
+                Player.OnCollision(entity); 
         }
     }
 

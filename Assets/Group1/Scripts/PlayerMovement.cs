@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
+    [SerializeField] private GameController _gameController;
     
     private void Update()
     {
@@ -18,16 +19,16 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(_moveSpeed * Time.deltaTime, 0, 0);
     }
 
-    public void OnCollision(GameObject obj)
+    public void OnCollision(GameObject entity)
     {
-        if (obj.name == "enemy")
-            Destroy(obj);
+        if (entity.name == "enemy")
+            Destroy(entity);
 
-        if (obj.name == "speed")
+        if (entity.name == "speed")
         {
             _moveSpeed *= 2;
-            isTimerOn = true;
-            timeRemain += 2;
+            _gameController.IsTimerOn = true;
+            _gameController.TimeRemain += 2;
         }
     }
     public void ReduceSpeedFromTimer(float reducedBy)
