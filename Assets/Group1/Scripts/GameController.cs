@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
 
     private float _distance;
 
-    private void Update()
+    private void FixedUpdate()
     {
         TimerManagement();
         DetectCollision();
@@ -40,19 +40,18 @@ public class GameController : MonoBehaviour
         foreach (var entity in Enemies)
         {
             if (entity != null)
-            { 
-            _distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, entity.gameObject.gameObject.transform.position);
-            if (_distance < _collisionDistance)
-                Player.OnCollision(entity);
+            {
+                _distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, entity.gameObject.gameObject.transform.position);
+                if (_distance < _collisionDistance)
+                    Player.OnCollision(entity);
             }
         }
     }
 
     public void IsGameEnd()
     {
-        GameObject[] result = GameObject.FindGameObjectsWithTag("Enemy");
+        Component[] result = GameObject.FindObjectsOfType(typeof(EnemyMovement)) as EnemyMovement[];
         if (result.Length == 0)
             MenuScreen.SetActive(true);
     }
 }
-
