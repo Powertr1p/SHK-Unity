@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
             if (TimeRemain < 0)
             {
                 IsTimerOn = false;
-                Player.ReduceSpeedFromTimer(0.2f);
+                Player.ReduceSpeedTimer(0.2f);
             }
         }
     }
@@ -39,15 +39,18 @@ public class GameController : MonoBehaviour
     {
         foreach (var entity in Enemies)
         {
+            if (entity != null)
+            { 
             _distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, entity.gameObject.gameObject.transform.position);
             if (_distance < _collisionDistance)
-                Player.OnCollision(entity); 
+                Player.OnCollision(entity);
+            }
         }
     }
 
     public void IsGameEnd()
     {
-        GameObject[] result = GameObject.FindGameObjectsWithTag("enemy");
+        GameObject[] result = GameObject.FindGameObjectsWithTag("Enemy");
         if (result.Length == 0)
             MenuScreen.SetActive(true);
     }

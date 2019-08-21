@@ -24,14 +24,14 @@ public class PlayerMovement : MonoBehaviour
         if (entity.name == "enemy")
             Destroy(entity);
 
-        if (entity.name == "speed")
+        if (entity.name == "Speed")
         {
             _moveSpeed *= 2;
             _gameController.IsTimerOn = true;
             _gameController.TimeRemain += 2;
         }
     }
-    public void ReduceSpeedFromTimer(float reducedBy)
+    public void ReduceSpeedTimer(float reducedBy)
     {
         _moveSpeed /= reducedBy;
     }

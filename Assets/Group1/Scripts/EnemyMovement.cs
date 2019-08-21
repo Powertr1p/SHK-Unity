@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float _stepSpeed = 2.0f;
+    [SerializeField] private float _moveSpeed = 2.0f;
     [SerializeField] private int _radius = 4;
     private Vector3 _currentPosition;
     private Vector3 _target;
@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Moving()
     {
-        _currentPosition = Vector3.MoveTowards(transform.position, _target, _stepSpeed * Time.deltaTime);
+        _currentPosition = Vector3.MoveTowards(transform.position, _target, _moveSpeed * Time.deltaTime);
         transform.position = _currentPosition;
     }
 }
