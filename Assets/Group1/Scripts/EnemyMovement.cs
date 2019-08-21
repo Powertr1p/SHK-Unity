@@ -3,32 +3,32 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float frameSpeed = 2.0f;
-    [SerializeField] private int radius = 4;
-    private Vector3 currentPosition;
-    private Vector3 target;
+    [SerializeField] private float _stepSpeed = 2.0f;
+    [SerializeField] private int _radius = 4;
+    private Vector3 _currentPosition;
+    private Vector3 _target;
 
-    void Start()
+    private void Start()
     {
         NextTarget();
     }
 
-    void Update()
+    private void Update()
     {
         Moving();
 
-        if (transform.position == target)
+        if (transform.position == _target)
             NextTarget();
     }
 
     private void NextTarget()
     {
-        target = Random.insideUnitCircle * radius;
+        _target = Random.insideUnitCircle * _radius;
     }
 
     private void Moving()
     {
-        currentPosition = Vector3.MoveTowards(transform.position, target, frameSpeed * Time.deltaTime);
-        transform.position = currentPosition;
+        _currentPosition = Vector3.MoveTowards(transform.position, _target, _stepSpeed * Time.deltaTime);
+        transform.position = _currentPosition;
     }
 }

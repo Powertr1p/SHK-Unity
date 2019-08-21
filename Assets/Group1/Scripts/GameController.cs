@@ -4,31 +4,32 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private float collisionDistance = 0.2f;
+    [SerializeField] private float _collisionDistance = 0.2f;
 
-    public GameObject menuScreen;
+    public GameObject MenuScreen;
     public GameObject Player;
-    public GameObject[] objArray;
+    public GameObject[] Enemies;
 
-    private float distance;
-    public float timeRemain;
-    public bool isTimerOn;
+    public float TimeRemain;
+    public bool IsTimerOn;
 
-    void Update()
+    private float _distance;
+
+    private void Update()
     {
         TimerManagement();
         DetectCollision();
-        isGameEnd();
+        IsGameEnd();
     }
 
     public void TimerManagement()
     {
-        if (isTimerOn)
+        if (IsTimerOn)
         {
-            timeRemain -= Time.deltaTime;
-            if (timeRemain < 0)
+            TimeRemain -= Time.deltaTime;
+            if (TimeRemain < 0)
             {
-                isTimerOn = false;
+                IsTimerOn = false;
                 Player.ReduceSpeedFromTimer(0.2f);
             }
         }
@@ -36,19 +37,19 @@ public class GameController : MonoBehaviour
 
     public void DetectCollision()
     {
-        foreach (var obj in objArray)
+        foreach (var obj in Enemies)
         {
-            distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, obj.gameObject.gameObject.transform.position);
-            if (distance < collisionDistance)
+            _distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, obj.gameObject.gameObject.transform.position);
+            if (_distance < _collisionDistance)
                 Player.OnCollision("enemy", obj); 
         }
     }
 
-    public void isGameEnd()
+    public void IsGameEnd()
     {
         GameObject[] result = GameObject.FindGameObjectsWithTag("enemy");
         if (result.Length == 0)
-            menuScreen.SetActive(true);
+            MenuScreen.SetActive(true);
     }
 }
 

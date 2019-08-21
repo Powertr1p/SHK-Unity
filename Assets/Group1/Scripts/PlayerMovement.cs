@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float _moveSpeed;
     
-    void Update()
+    private void Update()
     {
         if (Input.GetKey(KeyCode.W))
-            transform.Translate(0, moveSpeed * Time.deltaTime, 0);
+            transform.Translate(0, _moveSpeed * Time.deltaTime, 0);
         if (Input.GetKey(KeyCode.S))
-            transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
+            transform.Translate(0, -_moveSpeed * Time.deltaTime, 0);
         if (Input.GetKey(KeyCode.A))
-            transform.Translate(-moveSpeed * Time.deltaTime, 0, 0);
+            transform.Translate(-_moveSpeed * Time.deltaTime, 0, 0);
         if (Input.GetKey(KeyCode.D))
-            transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            transform.Translate(_moveSpeed * Time.deltaTime, 0, 0);
     }
 
     public void OnCollision(GameObject obj)
@@ -25,14 +25,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (obj.name == "speed")
         {
-            moveSpeed *= 2;
+            _moveSpeed *= 2;
             isTimerOn = true;
             timeRemain += 2;
         }
     }
     public void ReduceSpeedFromTimer(float reducedBy)
     {
-        moveSpeed /= reducedBy;
+        _moveSpeed /= reducedBy;
     }
 
 }
