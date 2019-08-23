@@ -36,10 +36,10 @@ public class GameController : MonoBehaviour
 
     public void DetectCollision()
     {
-        if (Player.isEnemyDestroyed)
+        if (Player.IsEnemyDestroyed)
         {
             IsGameEnd();
-            Player.isEnemyDestroyed = false;
+            Player.IsEnemyDestroyed = false;
         }
 
         foreach (var entity in Enemies)

@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
 
-    public bool isEnemyDestroyed;
+    public bool IsEnemyDestroyed;
     
     private void Update()
     {
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.GetComponent<EnemyMovement>() != null)
         {
             Destroy(other);
-            isEnemyDestroyed = true;
+            IsEnemyDestroyed = true;
         }
 
     }
