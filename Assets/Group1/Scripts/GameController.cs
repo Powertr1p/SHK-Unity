@@ -19,7 +19,6 @@ public class GameController : MonoBehaviour
     {
         TimerManagement();
         DetectCollision();
-        IsGameEnd();
     }
 
     public void TimerManagement()
@@ -30,13 +29,19 @@ public class GameController : MonoBehaviour
             if (TimeRemain < 0)
             {
                 IsTimerOn = false;
-                Player.ReduceSpeedTimer(0.2f);
+                Player.ReduceSpeed(0.2f);
             }
         }
     }
 
     public void DetectCollision()
     {
+        if (Player.isEnemyDestroyed)
+        {
+            IsGameEnd();
+            Player.isEnemyDestroyed = false;
+        }
+
         foreach (var entity in Enemies)
         {
             if (entity != null)
@@ -50,7 +55,7 @@ public class GameController : MonoBehaviour
 
     public void IsGameEnd()
     {
-        Component[] result = GameObject.FindObjectsOfType(typeof(EnemyMovement)) as EnemyMovement[];
+        Component[] result = GameObject.FindObjectsOfType<EnemyMovement>();
         if (result.Length == 0)
             MenuScreen.SetActive(true);
     }

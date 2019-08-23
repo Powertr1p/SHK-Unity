@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
+
+    public bool isEnemyDestroyed;
     
     private void Update()
     {
@@ -20,18 +22,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollision(GameObject other)
     {
-        if (other.GetComponent("EnemyMovement") as EnemyMovement != null)
-            Debug.Log("Destroyed");
-        
-        //Закоментил, так как в сцене нет объекта
-        /* if (entity.name == "Speed")
-         {
-             _moveSpeed *= 2;
-             IsTimerOn = true;
-             TimeRemain += 2;
-         } */
+        if (other.GetComponent<EnemyMovement>() != null)
+        {
+            Destroy(other);
+            isEnemyDestroyed = true;
+        }
+
     }
-    public void ReduceSpeedTimer(float reducedBy)
+        public void ReduceSpeed(float reducedBy)
     {
         _moveSpeed /= reducedBy;
     }

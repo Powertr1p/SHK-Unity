@@ -373,7 +373,11 @@ MonoBehaviour:
   _collisionDistance: 0.2
   MenuScreen: {fileID: 1054253062}
   Player: {fileID: 1761935012}
-  Enemies: []
+  Enemies:
+  - {fileID: 2083640146}
+  - {fileID: 1754708960}
+  - {fileID: 141422275}
+  - {fileID: 1578050036}
   TimeRemain: 5
   IsTimerOn: 0
 --- !u!1 &1054253062
@@ -637,7 +641,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754708960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.59, y: 0.71, z: 0}
+  m_LocalPosition: {x: 3.59, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -736,7 +740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 2
-  _gameController: {fileID: 534669906}
 --- !u!1 &2083640146
 GameObject:
   m_ObjectHideFlags: 0
