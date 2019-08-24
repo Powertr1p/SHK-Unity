@@ -10,8 +10,8 @@ public class GameController : MonoBehaviour
     public PlayerMovement Player;
     public GameObject[] Enemies;
 
-    public float TimeRemain;
-    public bool IsTimerOn;
+    private float TimeRemain;
+    private bool IsTimerOn;
 
     private float _distance;
 
