@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
 
-    public bool IsEnemyDestroyed;
-    
+    public event UnityAction EnemyKilled;
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.W))
@@ -23,15 +24,18 @@ public class PlayerMovement : MonoBehaviour
     public void OnCollision(GameObject other)
     {
         if (other.GetComponent<EnemyMovement>() != null)
-        {
-            Destroy(other);
-            IsEnemyDestroyed = true;
-        }
-
+            DestroyEnemy(other);
     }
-        public void ReduceSpeed(float reducedBy)
+    public void ReduceSpeed(float reducedBy)
     {
         _moveSpeed /= reducedBy;
+    }
+
+    private void DestroyEnemy(GameObject enemy)
+    {
+        DestroyImmediate(enemy);
+        if (EnemyKilled != null)
+            EnemyKilled.Invoke();
     }
 
 }

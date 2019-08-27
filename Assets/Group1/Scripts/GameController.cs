@@ -10,38 +10,37 @@ public class GameController : MonoBehaviour
     public PlayerMovement Player;
     public GameObject[] Enemies;
 
-    private float TimeRemain;
-    private bool IsTimerOn;
+    private float _timeRemain;
+    private bool _isTimerOn;
 
     private float _distance;
 
-    private void FixedUpdate()
+    private void Start()
+    {
+        Player.EnemyKilled += IsGameEnd;
+    }
+
+    private void Update()
     {
         TimerManagement();
         DetectCollision();
     }
 
-    public void TimerManagement()
+    private void TimerManagement()
     {
-        if (IsTimerOn)
+        if (_isTimerOn)
         {
-            TimeRemain -= Time.deltaTime;
-            if (TimeRemain < 0)
+            _timeRemain -= Time.deltaTime;
+            if (_timeRemain < 0)
             {
-                IsTimerOn = false;
+                _isTimerOn = false;
                 Player.ReduceSpeed(0.2f);
             }
         }
     }
 
-    public void DetectCollision()
+    private void DetectCollision()
     {
-        if (Player.IsEnemyDestroyed)
-        {
-            IsGameEnd();
-            Player.IsEnemyDestroyed = false;
-        }
-
         foreach (var entity in Enemies)
         {
             if (entity != null)
@@ -51,9 +50,9 @@ public class GameController : MonoBehaviour
                     Player.OnCollision(entity);
             }
         }
-    }
+    } 
 
-    public void IsGameEnd()
+    private void IsGameEnd()
     {
         Component[] result = GameObject.FindObjectsOfType<EnemyMovement>();
         if (result.Length == 0)
