@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
         {
             if (entity != null)
             {
-                _distance = Vector3.Distance(_player.gameObject.gameObject.GetComponent<Transform>().position, entity.gameObject.gameObject.transform.position);
+                _distance = Vector3.Distance(_player.GetComponent<Transform>().position, entity.transform.position);
                 if (_distance < _collisionDistance)
                     _player.OnCollision(entity.gameObject);
             }
