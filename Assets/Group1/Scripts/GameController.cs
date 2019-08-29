@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         ManageTimer();
-        DetectCollision();
+        DetectCollisions();
     }
 
     private void ManageTimer()
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
         _timeRemain = 10f;
     }
 
-    private void DetectCollision()
+    private void DetectCollisions()
     {
         foreach (var entity in _enemies)
         {
