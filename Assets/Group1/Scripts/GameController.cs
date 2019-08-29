@@ -6,9 +6,9 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private float _collisionDistance = 0.2f;
 
-    public GameObject MenuScreen;
-    public PlayerMovement Player;
-    public GameObject[] Enemies;
+    [SerializeField] private GameObject _gameOverScreen;
+    [SerializeField] private PlayerMovement _player;
+    [SerializeField] private GameObject[] _enemies;
 
     private float _timeRemain;
     private bool _isTimerOn;
@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        Player.EnemyKilled += IsGameEnd;
+        _player.EnemyKilled += IsGameEnd;
     }
 
     private void Update()
@@ -34,20 +34,20 @@ public class GameController : MonoBehaviour
             if (_timeRemain < 0)
             {
                 _isTimerOn = false;
-                Player.ReduceSpeed(0.2f);
+                _player.ReduceSpeed(0.2f);
             }
         }
     }
 
     private void DetectCollision()
     {
-        foreach (var entity in Enemies)
+        foreach (var entity in _enemies)
         {
             if (entity != null)
             {
-                _distance = Vector3.Distance(Player.gameObject.gameObject.GetComponent<Transform>().position, entity.gameObject.gameObject.transform.position);
+                _distance = Vector3.Distance(_player.gameObject.gameObject.GetComponent<Transform>().position, entity.gameObject.gameObject.transform.position);
                 if (_distance < _collisionDistance)
-                    Player.OnCollision(entity);
+                    _player.OnCollision(entity);
             }
         }
     } 
@@ -56,6 +56,6 @@ public class GameController : MonoBehaviour
     {
         Component[] result = GameObject.FindObjectsOfType<EnemyMovement>();
         if (result.Length == 0)
-            MenuScreen.SetActive(true);
+            _gameOverScreen.SetActive(true);
     }
 }
