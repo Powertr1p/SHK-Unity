@@ -7,15 +7,17 @@ public class GameController : MonoBehaviour
     [SerializeField] private float _collisionDistance = 0.2f;
 
     [SerializeField] private GameObject _gameOverScreen;
-    [SerializeField] private PlayerMovement _player;
-    [SerializeField] private GameObject[] _enemies;
+    private PlayerMovement _player;
+    private EnemyMovement[] _enemies;
 
     private float _timeRemain;
-
     private float _distance;
 
     private void Start()
     {
+        _player = FindObjectOfType<PlayerMovement>();
+        _enemies = FindObjectsOfType<EnemyMovement>();
+
         _player.EnemyKilled += IsGameEnd;
         _player.EnemyKilled += ResetTimer;
         ResetTimer();
@@ -51,7 +53,7 @@ public class GameController : MonoBehaviour
             {
                 _distance = Vector3.Distance(_player.gameObject.gameObject.GetComponent<Transform>().position, entity.gameObject.gameObject.transform.position);
                 if (_distance < _collisionDistance)
-                    _player.OnCollision(entity);
+                    _player.OnCollision(entity.gameObject);
             }
         }
     } 
