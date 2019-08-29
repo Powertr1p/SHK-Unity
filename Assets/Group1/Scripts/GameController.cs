@@ -11,32 +11,36 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject[] _enemies;
 
     private float _timeRemain;
-    private bool _isTimerOn;
 
     private float _distance;
 
     private void Start()
     {
         _player.EnemyKilled += IsGameEnd;
+        _player.EnemyKilled += ResetTimer;
+        ResetTimer();
     }
 
     private void Update()
     {
-        TimerManagement();
+        ManageTimer();
         DetectCollision();
     }
 
-    private void TimerManagement()
+    private void ManageTimer()
     {
-        if (_isTimerOn)
-        {
+        if (_timeRemain > 0)
             _timeRemain -= Time.deltaTime;
-            if (_timeRemain < 0)
-            {
-                _isTimerOn = false;
-                _player.ReduceSpeed(0.2f);
-            }
+        else
+        { 
+            _player.ReduceSpeed(1.5f);
+            ResetTimer();
         }
+    }
+
+    private void ResetTimer()
+    {
+        _timeRemain = 10f;
     }
 
     private void DetectCollision()
