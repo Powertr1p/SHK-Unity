@@ -5,20 +5,20 @@ using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _moveSpeedPerUnit = 2.0f;
 
     public event UnityAction EnemyKilled;
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.W))
-            transform.Translate(0, _moveSpeed * Time.deltaTime, 0);
+            transform.Translate(0, _moveSpeedPerUnit * Time.deltaTime, 0);
         if (Input.GetKey(KeyCode.S))
-            transform.Translate(0, -_moveSpeed * Time.deltaTime, 0);
+            transform.Translate(0, -_moveSpeedPerUnit * Time.deltaTime, 0);
         if (Input.GetKey(KeyCode.A))
-            transform.Translate(-_moveSpeed * Time.deltaTime, 0, 0);
+            transform.Translate(-_moveSpeedPerUnit * Time.deltaTime, 0, 0);
         if (Input.GetKey(KeyCode.D))
-            transform.Translate(_moveSpeed * Time.deltaTime, 0, 0);
+            transform.Translate(_moveSpeedPerUnit * Time.deltaTime, 0, 0);
     }
 
     public void OnCollision(GameObject other)
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ReduceSpeed(float reducedBy)
     {
-        _moveSpeed /= reducedBy;
+        _moveSpeedPerUnit /= reducedBy;
     }
 
     private void DestroyEnemy(GameObject enemy)
