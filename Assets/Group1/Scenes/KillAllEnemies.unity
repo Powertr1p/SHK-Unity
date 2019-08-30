@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1dabe5d120b44468243afee209407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeedPerUnit: 2
   _radius: 4
 --- !u!212 &141422278
 SpriteRenderer:
@@ -370,14 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6d0074e725a114e850d2e604fe4b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionDistance: 0.2
+  _collisionDistance: 1
   _gameOverScreen: {fileID: 1054253062}
-  _player: {fileID: 1761935012}
-  _enemies:
-  - {fileID: 2083640146}
-  - {fileID: 1754708960}
-  - {fileID: 141422275}
-  - {fileID: 1578050036}
 --- !u!1 &1054253062
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1dabe5d120b44468243afee209407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeedPerUnit: 2
   _radius: 4
 --- !u!212 &1578050039
 SpriteRenderer:
@@ -581,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1dabe5d120b44468243afee209407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeedPerUnit: 2
   _radius: 4
 --- !u!212 &1754708963
 SpriteRenderer:
@@ -737,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776ff9612f0c9c042941f92a4d186ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeedPerUnit: 2
 --- !u!1 &2083640146
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,5 +824,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1dabe5d120b44468243afee209407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeedPerUnit: 2
   _radius: 4

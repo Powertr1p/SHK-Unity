@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameplayManager : MonoBehaviour
 {
     [SerializeField] private float _collisionDistance = 0.2f;
 
