@@ -139,9 +139,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 141422275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f7df4705b7dae48944a39b48934484, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1dabe5d120b44468243afee209407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeedPerUnit: 2
+  _radius: 4
 --- !u!212 &141422278
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -368,13 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6d0074e725a114e850d2e604fe4b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go: {fileID: 1054253062}
-  a: {fileID: 1761935009}
-  B:
-  - {fileID: 2083640146}
-  - {fileID: 1754708960}
-  - {fileID: 141422275}
-  - {fileID: 1578050036}
+  _collisionDistance: 1
+  _gameOverScreen: {fileID: 1054253062}
 --- !u!1 &1054253062
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054253062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0.56, z: -0.15457831}
+  m_LocalPosition: {x: -0.08, y: 0.822, z: -0.15457831}
   m_LocalScale: {x: 25, y: 25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -481,9 +478,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1578050036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f7df4705b7dae48944a39b48934484, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1dabe5d120b44468243afee209407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeedPerUnit: 2
+  _radius: 4
 --- !u!212 &1578050039
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -573,9 +572,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754708960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f7df4705b7dae48944a39b48934484, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1dabe5d120b44468243afee209407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeedPerUnit: 2
+  _radius: 4
 --- !u!212 &1754708963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -632,7 +633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754708960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.59, y: 0.71, z: 0}
+  m_LocalPosition: {x: 3.59, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -650,7 +651,7 @@ GameObject:
   - component: {fileID: 1761935010}
   - component: {fileID: 1761935012}
   m_Layer: 0
-  m_Name: New Sprite (1)
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -727,12 +728,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761935009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dede9e7d6741aea4cb07b98da83cc6a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 776ff9612f0c9c042941f92a4d186ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spEed: 4
-  timer: 0
-  time: 0
+  _moveSpeedPerUnit: 2
 --- !u!1 &2083640146
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +821,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2083640146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f7df4705b7dae48944a39b48934484, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1dabe5d120b44468243afee209407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeedPerUnit: 2
+  _radius: 4
